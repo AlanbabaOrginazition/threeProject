@@ -24,6 +24,7 @@ export default {
 <style lang="scss" scoped>
   .el-container{
     height: 100%;
+    cursor: pointer;
     .el-aside {
       background-color: #D3DCE6;
       color: #333;
