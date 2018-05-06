@@ -20,7 +20,7 @@ export default {
   mounted() {
     this.map = L.map('map-main',{
       crs: L.CRS.Simple,
-      minZoom: -2,
+      minZoom: 0,
       maxZoom: 5,
       closePopupOnClick: false,
       zoomControl: false,
@@ -28,8 +28,8 @@ export default {
       zoomAnimation: false,
       attributionControl: false
     })
-    this.curImg = L.imageOverlay('http://dev-service.jtl3d.com/coord/images/05/05-4.png', [[0,0],[ 800, 1000]]).addTo(this.map);
-    this.map.setView([400, 500],-1);
+    this.curImg = L.imageOverlay('../../../../static/images/2dmap.jpg', [[0,0],[ 800, 1000]]).addTo(this.map);
+    this.map.setView([400, 500],0);
   },
   methods: {
   }

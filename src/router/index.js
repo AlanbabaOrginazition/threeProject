@@ -9,7 +9,15 @@ export default new Router({
     {
       path: '/',
       name: 'AppMain',
-      component: AppMain
+      component: AppMain,
+      children: [{
+        path: '2d',
+        component: ()=> import('@/components/Container/2dMap/index')
+      },
+      {
+        path: '3d',
+        component: ()=> import('@/components/Container/3dMap/index')
+      }]
     }
   ]
 })
