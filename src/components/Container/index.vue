@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <el-row :style="{ height:'100%'}" :gutter="10">
+  <el-row :style="{ height:'100%'}">
     <el-col :span="24" :style="{ height:'100%' }">
       <router-view></router-view>
     </el-col>

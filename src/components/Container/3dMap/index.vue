@@ -83,18 +83,54 @@ export default {
             plane.receiveShadow = true;  //平面接受阴影
             this.scene.add(plane);
 
-            this.camera.position.x = -100;
-            this.camera.position.y = 100;
-            this.camera.position.z = 60;
+            this.camera.position.x = -50;
+            this.camera.position.y = 50;
+            this.camera.position.z = 50;
             this.camera.lookAt(this.scene.position);
             document.getElementById('3dmap').appendChild(this.renderer.domElement);
+
+            let vertices = [
+                new THREE.Vector3(0,0,0),
+                new THREE.Vector3(0,5,0),
+                new THREE.Vector3(5,5,0),
+                new THREE.Vector3(5,0,0),
+                new THREE.Vector3(0,0,-5),
+                new THREE.Vector3(0,5,-5),
+                new THREE.Vector3(5,5,-5),
+                new THREE.Vector3(5,0,-5)
+            ];
+            let faces = [
+                new THREE.Face3(0,2,1),
+                new THREE.Face3(0,3,2),
+                new THREE.Face3(4,5,6),
+                new THREE.Face3(4,6,7),
+                new THREE.Face3(0,5,4),
+                new THREE.Face3(0,1,5),
+                new THREE.Face3(3,6,2),
+                new THREE.Face3(3,7,6),
+                new THREE.Face3(4,3,0),
+                new THREE.Face3(4,7,3),
+                new THREE.Face3(1,2,6),
+                new THREE.Face3(1,6,5)
+            ]
+            let geom = new THREE.Geometry();
+            geom.vertices = vertices;
+            geom.faces = faces;
+            geom.computeFaceNormals();
+            let material = new THREE.MeshLambertMaterial({
+                color: 0xff0000,
+                wireframe: true
+            })
+            let m = new THREE.Mesh(geom,material);
+            m.castShadow = true;
+            this.scene.add(m);
         },
         // 添加性能检测窗口
         addStats(){
             this.stats = new Stats();
             this.stats.setMode(0);
             this.stats.domElement.style.position = 'absolute';
-            this.stats.domElement.style.right = 0;
+            this.stats.domElement.style.left = 0;
             this.stats.domElement.style.bottom = 0;
             document.getElementById('stats').appendChild(this.stats.domElement);
         },
@@ -111,7 +147,7 @@ export default {
         // 添加光源
         addSplotLight(){
             this.spotLight = new THREE.SpotLight( 0xffffff );
-            this.spotLight.position.set(-40, 60, -10);
+            this.spotLight.position.set(-50, 50, 50);
             this.spotLight.castShadow = true;  //光源产生阴影
             this.spotLight.shadowMapHeight=2048;
             this.spotLight.shadowMapWidth=2048;
