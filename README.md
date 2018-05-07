@@ -1,12 +1,12 @@
 # three_project
 
-> A Vue.js project
+> A Vue.js && three.js project
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-npm install或者npm install --registry=https://registry.npm.taobao.org
+npm install  或者  npm install --registry=https://registry.npm.taobao.org
 
 # serve with hot reload at localhost:8080
 npm run dev
